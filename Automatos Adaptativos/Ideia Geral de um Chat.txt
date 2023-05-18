@@ -1,0 +1,14 @@
+1 - Saber o tipo de entrada:
+  (pergunta, afirmação, pedido/comando)
+2 - Saber o tipo de ação conforme o tipo de entrada:
+  pergunta:
+   -> Determintar o tipo de resposta
+      -> Determinar os paramentros para construir a resposta
+         -> Construir a resposta
+  afirmação:
+   -> Construir resposta (positivamente, neuto, ou negativamente)
+  pedido/ação:
+   -> Determinar parametros para ação:
+      (Verbo + Sentido, Objeto + Detalhes, Forma + Sentido)
+      -> Construir narrativa (algoritmo / passos) para ação:
+         -> Executar ação
