@@ -26,7 +26,14 @@ class AASO:
 			state = State(id, word)
 			self.states.append(state)
 			id += 1
-			
+				
+	def findStates(self, search):
+		return list(filter(search, self.states))
+		
+	def findTransitions(self, search):
+		return list(filter(search, self.transitions))
+		
+	def train(self, dados):
 		self.transitions = []
 		self.state = self.states[0]
 		for sentence in dados:
@@ -47,18 +54,11 @@ class AASO:
 		for t in self.transitions:
 			print(t.origin.id, "-", t.destination.id, "-", t.simble)
 				
-	def findStates(self, search):
-		return list(filter(search, self.states))
-		
-	def findTransitions(self, search):
-		return list(filter(search, self.transitions))
-		
-	def train(self):
-		print("Train")
-				
 		
 	def next(self, simble):
 		transitions = self.findTransitions(lambda x: x.simble == simble and x.origin.id == self.state.id);
+		if len(transitions) == 0:
+			return False
 		self.state = transitions[0].destination;
 		return self.state.simble;
 		
@@ -68,7 +68,7 @@ def load_data():
 def main():
 	dados = load_data()
 	model = AASO(dados);
-	model.train();
+	model.train(dados);
 	
 	start = input('Type the begining of text: ');
 	numberOfSteps = int(input('The size of the text to be generate: '));
